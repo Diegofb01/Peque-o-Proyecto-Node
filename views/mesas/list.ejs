@@ -1,0 +1,11 @@
+<h1>Lista de Mesas</h1>
+<a href="/mesas/create">Agregar Mesa</a>
+<ul>
+    <% mesas.forEach(mesa => { %>
+        <li>
+            Mesa <%= mesa.numero %> - Capacidad: <%= mesa.capacidad %>
+            <a href="/mesas/edit/<%= mesa.id %>">Editar</a>
+            <a href="/mesas/delete/<%= mesa.id %>">Eliminar</a>
+        </li>
+    <% }); %>
+</ul>

@@ -1,0 +1,48 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS gestionRestaurante;
+USE gestionRestaurante;
+
+-- Crear la tabla de productos
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Crear la tabla de personal
+CREATE TABLE personal (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    puesto ENUM('Cocinero', 'Mesero', 'Administrador') NOT NULL,
+    contraseña VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Crear la tabla de mesas
+CREATE TABLE mesas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    numero INT NOT NULL UNIQUE,
+    capacidad INT NOT NULL,
+    estado ENUM('Disponible', 'Ocupada', 'Reservada') DEFAULT 'Disponible',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insertar datos de prueba en productos
+INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
+('Hamburguesa', 'Hamburguesa con queso y papas fritas', 8.99, 20),
+('Pizza', 'Pizza de pepperoni grande', 12.50, 15),
+('Refresco', 'Lata de refresco de 355ml', 1.50, 50);
+
+-- Insertar datos de prueba en personal
+INSERT INTO personal (nombre, puesto, contraseña) VALUES
+('Juan Pérez', 'Cocinero', '$2a$10$EjemploDeContraseñaEncriptada'),
+('Ana López', 'Mesero', '$2a$10$OtraContraseñaEncriptada');
+
+-- Insertar datos de prueba en mesas
+INSERT INTO mesas (numero, capacidad, estado) VALUES
+(1, 4, 'Disponible'),
+(2, 6, 'Reservada'),
+(3, 2, 'Ocupada');

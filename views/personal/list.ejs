@@ -1,0 +1,11 @@
+<h1>Lista de Personal</h1>
+<a href="/personal/create">Agregar Empleado</a>
+<ul>
+    <% personal.forEach(empleado => { %>
+        <li>
+            <%= empleado.nombre %> - <%= empleado.puesto %>
+            <a href="/personal/edit/<%= empleado.id %>">Editar</a>
+            <a href="/personal/delete/<%= empleado.id %>">Eliminar</a>
+        </li>
+    <% }); %>
+</ul>

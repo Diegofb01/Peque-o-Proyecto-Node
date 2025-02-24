@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Restaurante</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <h1>Bienvenido a Gestión Restaurante</h1>
+
+    <% if (user) { %>
+        <p>Hola, <%= user.nombre %> | <a href="/auth/logout">Cerrar sesión</a></p>
+    <% } else { %>
+        <p><a href="/auth/login">Iniciar sesión</a> | <a href="/auth/register">Registrarse</a></p>
+    <% } %>
+
+    <ul>
+        <li><a href="/productos">Administrar Productos</a></li>
+        <li><a href="/personal">Administrar Personal</a></li>
+        <li><a href="/mesas">Administrar Mesas</a></li>
+    </ul>
+</body>
+</html>

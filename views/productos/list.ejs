@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Lista de Productos</title>
+</head>
+<body>
+    <h1>Productos</h1>
+    <a href="/productos/create">Agregar Producto</a>
+    <ul>
+        <% productos.forEach(producto => { %>
+            <li>
+                <%= producto.nombre %> - $<%= producto.precio %>
+                <a href="/productos/edit/<%= producto.id %>">Editar</a>
+                <a href="/productos/delete/<%= producto.id %>">Eliminar</a>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
