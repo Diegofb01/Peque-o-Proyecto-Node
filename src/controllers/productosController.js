@@ -12,8 +12,8 @@ exports.createView = (req, res) => {
 };
 
 exports.create = (req, res) => {
-    const { nombre, precio } = req.body;
-    db.query('INSERT INTO productos (nombre, precio) VALUES (?, ?)', [nombre, precio], (err) => {
+    const { nombre, precio, descripcion, stock } = req.body;
+    db.query('INSERT INTO productos (nombre, precio, descripcion, stock) VALUES (?, ?, ?, ?)', [nombre, precio, descripcion, stock], (err) => {
         if (err) throw err;
         res.redirect('/productos');
     });
@@ -27,9 +27,21 @@ exports.editView = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    const { nombre, precio } = req.body;
-    db.query('UPDATE productos SET nombre = ?, precio = ? WHERE id = ?', [nombre, precio, req.params.id], (err) => {
-        if (err) throw err;
+    const { nombre, precio, descripcion, stock } = req.body;
+    const id = req.params.id;
+
+    console.log('Actualizando producto:', { id, nombre, precio, descripcion, stock });
+
+    db.query('UPDATE productos SET nombre = ?, precio = ?, descripcion = ?, stock = ? WHERE id = ?', [nombre, precio, descripcion, stock, id], (err, result) => {
+        if (err) {
+            console.error('Error al actualizar el producto:', err);
+            return res.status(500).send('Error interno');
+        }
+        
+        if (result.affectedRows === 0) {
+            return res.status(404).send('Producto no encontrado');
+        }
+
         res.redirect('/productos');
     });
 };
@@ -49,4 +61,3 @@ exports.getById = (req, res) => {
         res.render('productos/edit', { producto: results[0] });
     });
 };
-

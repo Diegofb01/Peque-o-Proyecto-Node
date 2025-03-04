@@ -1,0 +1,10 @@
+config:
+  target: "http://localhost:3000"  # Cambia el puerto si es necesario
+  phases:
+    - duration: 30  # Duración en segundos de la prueba
+      arrivalRate: 5  # 5 usuarios por segundo
+
+scenarios:
+  - flow:
+      - get:
+          url: "/mesas"  # Cambia por una ruta de tu API

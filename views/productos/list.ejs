@@ -5,7 +5,9 @@
 </head>
 <body>
     <h1>Productos</h1>
+
     <a href="/productos/create">Agregar Producto</a>
+
     <ul>
         <% productos.forEach(producto => { %>
             <li>
@@ -15,5 +17,8 @@
             </li>
         <% }); %>
     </ul>
+
+    <a href="/">Ir a la página principal</a> |
+    <a href="javascript:history.back()">Volver atrás</a>
 </body>
 </html>

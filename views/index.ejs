@@ -10,7 +10,7 @@
     <h1>Bienvenido a Gestión Restaurante</h1>
 
     <% if (user) { %>
-        <p>Hola, <%= user.nombre %> | <a href="/auth/logout">Cerrar sesión</a></p>
+        <p>Hola, <%= user.name %> | <a href="/auth/logout">Cerrar sesión</a></p>
     <% } else { %>
         <p><a href="/auth/login">Iniciar sesión</a> | <a href="/auth/register">Registrarse</a></p>
     <% } %>

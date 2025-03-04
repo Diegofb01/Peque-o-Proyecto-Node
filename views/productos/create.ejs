@@ -1,5 +1,13 @@
+<h1>Agregar Nuevo Producto</h1>
+
 <form action="/productos/create" method="POST">
     <input type="text" name="nombre" placeholder="Nombre del producto" required>
-    <input type="number" name="precio" placeholder="Precio" required>
+    <input type="number" name="precio" placeholder="Precio" step="0.01" required>
+    <textarea name="descripcion" placeholder="Descripción" required></textarea>
+    <input type="number" name="stock" placeholder="Stock" required>
     <button type="submit">Guardar</button>
 </form>
+
+<a href="/productos">Volver a la lista de productos</a> |
+<a href="/">Ir a la página principal</a> |
+<a href="javascript:history.back()">Volver atrás</a>

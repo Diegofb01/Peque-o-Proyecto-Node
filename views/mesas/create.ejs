@@ -1,5 +1,19 @@
+<h1>Agregar Nueva Mesa</h1>
+
 <form action="/mesas/create" method="POST">
     <input type="number" name="numero" placeholder="Número de mesa" required>
     <input type="number" name="capacidad" placeholder="Capacidad" required>
+    
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado" required>
+        <option value="disponible">Disponible</option>
+        <option value="reservada">Reservada</option>
+        <option value="ocupada">Ocupada</option>
+    </select>
+    
     <button type="submit">Guardar</button>
 </form>
+
+<a href="/mesas">Volver a la lista de mesas</a> |
+<a href="/">Ir a la página principal</a> |
+<a href="javascript:history.back()">Volver atrás</a>
